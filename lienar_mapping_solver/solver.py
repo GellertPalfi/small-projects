@@ -82,6 +82,14 @@ def task_3():
         task3_calculator(matrix, coefficient)
 
 
-task_1()
-task_2()
-task_3()
+while true:
+    print("which task would you like to do?(press q to exit)")
+    choice = input()
+    if choice == 1:
+        task_1()
+    elif choice == 2:
+        task_2()
+    elif choice == 3:
+        task_3()
+    elif choice == 'q':
+        break
