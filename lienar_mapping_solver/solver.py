@@ -10,7 +10,7 @@ def task_1():
         # used for getting values to the right spot, because we read x y x y, but we need x x y y order
         order_table = [0, 2, 1, 3]
 
-        print("If there is no such argument, type 0 instead")
+        print("Enter your formula, if there is no such index, type 0 instead")
         while len(formula) < 4:
             number = input()
             try:
@@ -85,11 +85,11 @@ def task_3():
 while true:
     print("which task would you like to do?(press q to exit)")
     choice = input()
-    if choice == 1:
+    if choice == '1':
         task_1()
-    elif choice == 2:
+    elif choice == '2':
         task_2()
-    elif choice == 3:
+    elif choice == '3':
         task_3()
     elif choice == 'q':
         break
