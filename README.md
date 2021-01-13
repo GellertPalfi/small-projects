@@ -5,7 +5,7 @@
 	sample input is provided as sample.png in the folder
 
 2. urban dictionary scraper
-	scrapes the trending definitions from www.urbandictionary.com
-	options include checking for updates, writing definitions into .json file
-	or listing them all etc.
+scrapes the trending definitions from www.urbandictionary.com
+options include checking for updates, writing definitions into .json file
+or listing them all etc.
 	
