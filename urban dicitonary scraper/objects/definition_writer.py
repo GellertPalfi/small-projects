@@ -1,9 +1,13 @@
 import json
+import os
 
 from object_scraper.definiton_scraper import definition_maker
 
 
 def check_for_updates():
+    """
+    checking if any new definitions exist and adding them if user requests
+    """
     try:
         current_definitions = [definition["name"] for definition in read_json()]
     except TypeError:
@@ -36,7 +40,8 @@ def check_for_updates():
                 for index in definitions_toadd:
                     print(index)
             elif choice == 'u':
-                update_json()
+                update_json(definitions_toadd)
+                break
             elif choice == 'b':
                 break
 
@@ -47,18 +52,30 @@ def read_json():
     """
     try:
         with open('definitions.json', 'r') as file:
-            definitions = json.load(file)
-            return definitions
+            try:
+                definitions = json.load(file)
+                return definitions
+            except json.decoder.JSONDecodeError:
+                print("file is empty. Try checking for new definitions first\n")
+
     except IOError:
-        print("file not found. Maybe check for new definitions first?\n")
+        print("file not found. Try checking for new definitions first\n")
         return
 
 
-def update_json():
+def update_json(definitions):
     """
     adding definitions which are not in the .json file
     """
-    pass
+    current = read_json()
+    for i in range(len(definitions)):
+        current.append(definitions[i].__dict__)
+
+    with open('definitions.json', 'w') as file:
+        file.write('[\n' + ',\n'.join(json.dumps(definition) for definition in current) + '\n]\n')
+
+    print("definitions successfully added, returning to main menu\n")
+
 
 def write_json():
     """
@@ -67,7 +84,7 @@ def write_json():
     with open('definitions.json', 'w') as file:
         file.write('[\n' + ',\n'.join(json.dumps(definition.__dict__) for definition in definition_maker()) + '\n]\n')
 
-    print("definitions succesfully overwritten\n")
+    print("definitions successfully written into .json file\n")
 
 
 def list_definition():
@@ -94,13 +111,17 @@ def list_definition():
         elif choice == 'o':
             print(next(index))
             while True:
+                try:
 
-                sublist_choice = input("n: list the next one\n"
-                                       "b: go back\n")
+                    sublist_choice = input("n: list the next one\n"
+                                           "b: go back\n")
 
-                if sublist_choice == 'n':
-                    print(next(index))
-                elif sublist_choice == 'b':
+                    if sublist_choice == 'n':
+                        print(next(index))
+                    elif sublist_choice == 'b':
+                        break
+                except StopIteration:
+                    print("No more definitions to print, returning to list menu")
                     break
 
         elif choice == 'b':

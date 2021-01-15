@@ -7,7 +7,7 @@ def menu():
         print("What would you like to do?")
         choice = input("l: list currently stored definitions\n"
                        "c: check for new definitions\n"
-                       "w: write definitions into .json file(override)\n"
+                       "w: write definitions into .json file(overrides current one)\n"
                        "q: quit\n")
 
         if choice == 'l':
@@ -23,4 +23,3 @@ def menu():
 
 
 menu()
-input('Press ENTER to exit')
