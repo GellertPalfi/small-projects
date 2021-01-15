@@ -1,5 +1,4 @@
 import json
-import os
 
 from object_scraper.definiton_scraper import definition_maker
 
@@ -51,7 +50,7 @@ def read_json():
     reading the currently stored definitions
     """
     try:
-        with open('definitions.json', 'r') as file:
+        with open('definitions.json', 'r', encoding='utf8') as file:
             try:
                 definitions = json.load(file)
                 return definitions
@@ -81,8 +80,8 @@ def write_json():
     """
     overwriting the current .json file with the trending definitions
     """
-    with open('definitions.json', 'w') as file:
-        file.write('[\n' + ',\n'.join(json.dumps(definition.__dict__) for definition in definition_maker()) + '\n]\n')
+    with open('definitions.json', 'w', encoding='utf8') as file:
+        file.write('[\n' + ',\n'.join(json.dumps(definition.__dict__, ensure_ascii=False) for definition in definition_maker()) + '\n]\n')
 
     print("definitions successfully written into .json file\n")
 
@@ -105,7 +104,10 @@ def list_definition():
                        "b: go back\n")
         if choice == 'a':
             for definiton in definitons:
-                print(definiton)
+                print(f'{definiton["name"]} \n'
+                      f'{definiton["meaning"]}\n'
+                      f'{definiton["example"]}\n'
+                      f'likes:{definiton["likes"]}|dislikes:{definiton["dislikes"]}\n')
             print("\n")
 
         elif choice == 'o':

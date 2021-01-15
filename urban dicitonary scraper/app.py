@@ -1,4 +1,4 @@
-from object_scraper.definiton_scraper import definition_maker
+
 from objects.definition_writer import *
 
 
@@ -7,7 +7,7 @@ def menu():
         print("What would you like to do?")
         choice = input("l: list currently stored definitions\n"
                        "c: check for new definitions\n"
-                       "w: write definitions into .json file(overrides current one)\n"
+                       "w: parse definitions(overrides current one)\n"
                        "q: quit\n")
 
         if choice == 'l':
@@ -21,5 +21,9 @@ def menu():
         elif choice == 'q':
             break
 
+# input()
 
-menu()
+
+if __name__ == '__main__':
+    # input()
+    menu()
