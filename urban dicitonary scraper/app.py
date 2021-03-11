@@ -6,7 +6,7 @@ def menu():
     while True:
         print("What would you like to do?")
         choice = input("l: list currently stored definitions\n"
-                       "c: check for new definitions\n"
+                       "c: update definitions(only works if you already parsed them)\n"
                        "w: parse definitions(overrides current one)\n"
                        "q: quit\n")
 
@@ -21,9 +21,6 @@ def menu():
         elif choice == 'q':
             break
 
-# input()
-
 
 if __name__ == '__main__':
-    # input()
     menu()
