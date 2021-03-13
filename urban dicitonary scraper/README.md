@@ -1,7 +1,7 @@
 #### Urban dictionary scraper  
-	scrapes(not api) the trending definitions from www.urbandictionary.com
-	options include checking for updates, writing definitions into .json file
-	or listing them all etc.
+scrapes(not api) the trending definitions from www.urbandictionary.com  
+options include checking for updates, writing definitions into .json file  
+or listing them all etc.  
 
 
 #### Steps to run  
